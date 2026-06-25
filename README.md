@@ -1,5 +1,74 @@
 # van-afan
 
-Van Afan is a Codex skill for generating Ian-style Chinese article illustrations using the yellow fuzzy blob subject from `assets/subject.png`.
+`van-afan` 是一个用于中文正文配图的 Codex skill。它基于原 `ian-xiaohei-illustrations` 的配图方法论，保留原有的文章分析、shot list、构图隐喻、提示词生成和质量检查流程，只把默认画面主体替换为用户上传的黄色毛团角色“小黄”。
 
-The complete skill package is provided in `van-afan.zip`.
+## 功能介绍
+
+这个 skill 用来把中文文章、帖子、博客、Notion 文档、工作流文档、方法论说明里的关键观点，转化成 16:9 横版手绘正文配图。它不是做 PPT 图表，也不是做商业插画，而是生成清爽、怪诞、有创意、带一点手写批注的文章插图。
+
+默认主体是 `assets/subject.png` 中的小黄角色：黄色不规则毛团、黑色手绘轮廓、圆眼、细长手脚、空表情。生成图时，小黄会参与核心动作或结构隐喻，而不是作为角落里的装饰物。
+
+## 适合使用的场景
+
+- 为中文文章规划哪些段落需要配图
+- 根据文章内容生成 1-9 张正文插图方案
+- 把抽象观点变成可理解的视觉隐喻
+- 为流程、结构、状态、转折、常见问题做手绘解释图
+- 生成带有少量中文手写标注的白底横版插图
+- 修改已有图的方向，例如去标题、减少文字、换成小黄主体、重做构图
+
+## 核心能力
+
+- **文章理解**：先提炼核心观点、认知转折和适合配图的位置。
+- **配图规划**：输出 shot list，说明每张图放在哪、表达什么、小黄做什么。
+- **单图生成**：为每个观点生成独立的 16:9 白底手绘插图提示词。
+- **主体一致性**：默认使用小黄作为核心视觉 IP，避免画回原来的黑色角色。
+- **风格控制**：保持黑色手绘线稿、少量红橙蓝批注、大量留白和怪诞但清爽的气质。
+- **质量检查**：检查画面是否太像 PPT、是否太满、文字是否过多、主体是否跑偏。
+
+## 输出内容
+
+根据用户请求，skill 可以输出：
+
+- 配图位置建议
+- 4-8 张图的 shot list
+- 单张或多张图片生成提示词
+- 实际生成的正文配图
+- 图片用途说明和保存路径
+- 对已有图片的修改建议
+
+## 文件结构
+
+```text
+van-afan/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+├── assets/
+│   ├── subject.png
+│   └── examples/
+└── references/
+    ├── composition-patterns.md
+    ├── prompt-template.md
+    ├── qa-checklist.md
+    ├── style-dna.md
+    └── xiaohuang-ip.md
+```
+
+## 使用方式
+
+在 Codex 中可以这样调用：
+
+```text
+Use $van-afan to 为这篇中文文章设计并生成几张小黄怪诞正文配图。
+```
+
+也可以直接提出需求，例如：
+
+```text
+帮我分析这篇文章哪里适合配图，并生成小黄风格的正文插图方案。
+```
+
+## 交付包
+
+完整 skill 包在仓库中的 `van-afan.zip`。解压后即可得到完整的 `van-afan` skill 目录。
